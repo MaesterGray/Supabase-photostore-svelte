@@ -8,6 +8,7 @@ declare global {
 			safeGetSession: () => Promise<{ session: Session | null; user: User | null }>
 			session: Session | null
 			user: User | null
+			favorites:[]
 		}
 		// interface PageData {}
 		// interface PageState {}

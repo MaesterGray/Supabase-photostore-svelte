@@ -5,7 +5,7 @@ import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/publi
 
 import type { LayoutLoad } from './$types'
 
-export const load: LayoutLoad = async ({ data, depends, fetch }) => {
+export const load = async ({ data, depends, fetch }) => {
   /**
    * Declare a dependency so the layout can be invalidated, for example, on
    * session refresh.
