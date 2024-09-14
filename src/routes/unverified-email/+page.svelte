@@ -5,7 +5,6 @@
 </script>
 
 
-	<div>
+	<div class=" w-screen h-screen items-center justify-center flex flex-col gap-3 bg-gray-800 text-xl ">
 		Check your inbox to verify your email, before proceeding
-		<a href="/">Login</a>
 	</div>

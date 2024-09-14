@@ -1,20 +1,8 @@
 <script lang="ts">
-    let {signInAction,signUpAction}:{signInAction:string,signUpAction:string} = $props()
-    let isNewUser = $state(false)
+	import { Upload } from "lucide-svelte";
+
+    let {signInAction,signUpAction,isNewUser,stateChanger}:{signInAction:string,signUpAction:string,isNewUser:boolean,stateChanger:(option:string)=>void} = $props()
     let isSigningIn = $state(false)
-    let isSigningUp = $state(false)
-    let signInMessage = $state('Sign In')
-
-
-$effect(()=>{
-    if (isSigningIn){
-        signInMessage = 'Signing In'
-    } else if (isNewUser){
-        signInMessage = 'Sign Up'
-    }
-})
-
-
 </script>
 
 
@@ -40,7 +28,13 @@ $effect(()=>{
             type="submit"
             class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-            {signInMessage} 
+            {#if isNewUser}
+            Sign Up
+            {:else if isSigningIn}
+            Loading
+            {:else}
+            Sign in
+            {/if}
         </button>
         <p class="text-center text-white">
             {#if isNewUser}
@@ -63,7 +57,5 @@ $effect(()=>{
             </button>
             {/if}
         </p>
-        {#if isSigningUp}
-        <p class="text-center text-white">Email sent! Check your email to confirm sign up.</p>
-        {/if}
+      
     </form>
