@@ -1,9 +1,24 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import Nav from '$lib/components/Nav.svelte';
 	import PhotoGrid from '$lib/components/PhotoGrid.svelte';
 	import SignOutButton from '$lib/components/SignOutButton.svelte';
 	 let {data} =  $props();
+
+	 let signingOut = $state(false)
+	
+	 async function handleSignOut(){
+        console.log('I ran')
+        signingOut=true
+      //await  data.supabase.auth.signOut()
+
+      try {
+        signingOut = false
+        //goto('/',{replaceState:true})
+
+      } catch (error) {
+        console.error(error)
+      }
+    }
 </script>
 
 
@@ -16,6 +31,6 @@
 					<PhotoGrid displayedPhotos={data.favorites} forFavorite={true} favorites={data.favorites} />
 		</div>
 		<div class="absolute top-4 right-4">
-			<SignOutButton route={'?/private/signOut'}/>
+			<SignOutButton signingOut={signingOut} handleSignOut={handleSignOut}/>
 		</div>
 </main>

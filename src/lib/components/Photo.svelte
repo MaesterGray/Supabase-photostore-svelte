@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Heart,Trash2 } from 'lucide-svelte';
     import PhotoModal from './PhotoModal.svelte';
-    let {src, alt, width, height, photoName, isAFavorite }:{src:string,alt:string,width:number,height:number,photoName:string,isAFavorite:Boolean}=$props()
+    let {src, alt,  photoName, isAFavorite }:{src:string,alt:string,photoName:string,isAFavorite:Boolean}=$props()
     let showModal = $state(false)
 
     function toggleModal(){

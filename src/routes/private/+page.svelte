@@ -3,9 +3,9 @@
     import PhotoUploader from "$lib/components/PhotoUploader.svelte";
     import PhotoGrid from "$lib/components/PhotoGrid.svelte";
     import SignOutButton from "$lib/components/SignOutButton.svelte";
-    import { invalidate } from "$app/navigation";
+    import { invalidate ,goto} from "$app/navigation";
     let uploading = $state(false)
-    
+    let signingOut = $state(false)
     let {data} = $props()
     async function handleFileUpload(event:Event){
         try{
@@ -26,6 +26,20 @@
             uploading=false
         }
     }    
+
+    async function handleSignOut(){
+        console.log('I ran')
+        signingOut=true
+      await  data.supabase.auth.signOut()
+
+      try {
+        signingOut = false
+        goto('/',{replaceState:true})
+
+      } catch (error) {
+        console.error(error)
+      }
+    }
 </script>
 
 <main class="min-h-screen bg-gray-800 text-white relative p-10">
@@ -38,6 +52,6 @@
         <PhotoGrid  displayedPhotos={data.photos} favorites={data.favorites} forFavorite={false}/>
         </div>
         <div class="absolute top-4 right-4">
-            <SignOutButton route='?/signOut' />
+            <SignOutButton handleSignOut={handleSignOut} signingOut={signingOut}/>
         </div>
 </main>

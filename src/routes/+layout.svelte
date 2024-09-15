@@ -4,10 +4,8 @@
 	import { onMount } from 'svelte';
 	let {children,data} = $props()
 	
-		const {session,supabase} = data
-
-
-
+		
+			const {session,supabase} = data
 	
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {

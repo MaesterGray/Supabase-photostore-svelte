@@ -1,9 +1,10 @@
 import { extractFilePath } from '$lib';
-
+import { redirect } from '@sveltejs/kit';
 export const actions={
     signOut:async({locals:{session,supabase}})=>{
         if (session) {
             await supabase.auth.signOut()
+            redirect(303,'/')
         }
     },
     deletePhoto:async({locals:{supabase,session},request})=>{

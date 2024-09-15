@@ -24,8 +24,6 @@
 
     src={photo.url}
     alt={`Photo ${photo.photoName}`}
-    width={200}
-    height={200}
     photoName={photo.photoName}
     isAFavorite={forFavorite?true:favorites.some((obj)=>obj.photoName === photo.photoName)}
 />

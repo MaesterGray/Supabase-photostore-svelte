@@ -1,12 +1,16 @@
 <script lang='ts'>
-    let {route}:{route:string} = $props()
-</script>
+    let {handleSignOut,signingOut}:{handleSignOut:()=>void,signingOut:boolean} = $props()
 
-<form action={route} method="post">
+</script>
+<div >
     <button 
-    type="submit"
     class="bg-gray-700 text-white font-bold py-2 px-4 rounded hover:bg-gray-600"
-    >
+    onclick={()=>{console.log('I ran');handleSignOut()}} >
+      {#if signingOut}
+        signing out ....
+        {:else}
         Sign Out
+      {/if} 
     </button>
-</form>
+</div>
+    

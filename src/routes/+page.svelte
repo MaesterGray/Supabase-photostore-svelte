@@ -10,7 +10,6 @@
 }  else{
         isNewUser = false
       }
-      console.log(stateChanger)
     }
 </script>
 <main class="flex items-center justify-center bg-gray-900 min-h-screen">
